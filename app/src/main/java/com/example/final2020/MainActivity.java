@@ -3,11 +3,12 @@ package com.example.final2020;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -27,9 +28,10 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView t_temp,t_city,t_description,t_date;
+    TextView t_temp,t_city,t_description,t_date,t5;
     Button b1_decide;
     Spinner e1_target;
+    ImageView i_visual,day_and_night;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +42,17 @@ public class MainActivity extends AppCompatActivity {
         t_city = (TextView)findViewById(R.id.t3);
         t_description = (TextView)findViewById(R.id.t4);
         t_date = (TextView)findViewById(R.id.t2);
+        t5 = (TextView)findViewById(R.id.textView5);
         
         e1_target = (Spinner)findViewById(R.id.sp_city);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(MainActivity.this,R.array.tw_cities,android.R.layout.simple_spinner_dropdown_item);
         e1_target.setAdapter(adapter);
+        i_visual = (ImageView)findViewById(R.id.i_visual);
+        day_and_night = (ImageView)findViewById(R.id.day_and_night);
 
         find_weather(e1_target);
+
+
     }
 
     public void find_weather(View view) {
@@ -64,6 +71,47 @@ public class MainActivity extends AppCompatActivity {
                     String description     = object.getString("description");
                     String city            = response.getString("name");
 
+                    Log.d("description", object.getString("description"));
+
+                    //顯示時間(時分秒)，且判定白天還是晚上
+                    Calendar mCal = Calendar.getInstance();
+                    CharSequence s = DateFormat.format("yyyy-MM-dd kk:mm:ss", mCal.getTime());
+                    int hour = mCal.get(Calendar.HOUR_OF_DAY);// 獲取小時
+                    int minute = mCal.get(Calendar.MINUTE);// 獲取分鐘
+                    int minuteOfDay = hour * 60 + minute;// 從0:00分開是到目前為止的分鐘數
+                    final int start = 7* 60 ;// 起始時間 00:20的分鐘數
+                    final int end = 18 * 60;// 結束時間 8:00的分鐘數
+                    if (minuteOfDay >= start && minuteOfDay <= end) {
+                        t5.setText(s+"白天");
+
+                        day_and_night.setImageResource(R.drawable.day);
+                    } else {
+                        t5.setText(s+"晚上");
+                        day_and_night.setImageResource(R.drawable.night);
+                    }
+
+
+                    //依天氣狀況顯示圖案
+                    switch (description){
+                        case "clear sky":
+                            i_visual.setImageResource(R.drawable.clear);
+                            break;
+                        case "overcast clouds":
+                            i_visual.setImageResource(R.drawable.overcast);
+                            break;
+                        case "broken clouds":
+                            i_visual.setImageResource(R.drawable.broken);
+                            break;
+                        case "scattered clouds":
+                            i_visual.setImageResource(R.drawable.scattered);
+                            break;
+                        case "few clouds":
+                            i_visual.setImageResource(R.drawable.few);
+                            break;
+                        default:
+                            i_visual.setImageResource(R.drawable.quest);
+                            break;
+                    }
                     //t1_temp.setText(temp);
                     t_city.setText(city);//城市
                     t_description.setText(description);//天氣概況
@@ -81,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
                     int i           = (int)centi;
                     t_temp.setText(String.valueOf(i)+" °C");
 
+
+
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -93,5 +143,7 @@ public class MainActivity extends AppCompatActivity {
         );
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jor);
+
+
     }
 }

@@ -6,28 +6,23 @@
     <string name="temperature">Temperature:</string>
     <string name="sec">Search</string>
     <string-array name="tw_cities">
-        <item>Zhubei</item>
-        <item>Yuanlin</item>
-        <item>Yilan</item>
-        <item>Toufen</item>
-        <item>Taoyuan</item>
-        <item>Taitung</item>
-        <item>Taipei</item>
-        <item>Tainan</item>
-        <item>Taichung</item>
-        <item>Taibao</item>
-        <item>Puzi</item>
-        <item>Pingtung</item>
-        <item>New Taipei</item>
-        <item>Nantou</item>
-        <item>Miaoli</item>
-        <item>Magong</item>
-        <item>Keelung</item>
-        <item>Kaohsiung</item>
-        <item>Hualien</item>
-        <item>Hsinchu</item>
-        <item>Douliu</item>
-        <item>Chiayi</item>
-        <item>Changhua</item>
+        <item>Zhubei</item>//新竹縣竹北市
+        <item>Yilan</item>//宜蘭
+        <item>Taoyuan District</item>//桃園
+        <item>Taitung</item>//台東
+        <item>Taipei</item>//台北
+        <item>Tainan</item>//台南
+        <item>Taichung</item>//台中
+        <item>Pingtung</item>//屏東
+        <item>New Taipei</item>//新北市
+        <item>Nantou</item>//南投
+        <item>Miaoli</item>//苗栗
+        <item>Magong</item>//澎湖馬公市
+        <item>Keelung</item>//基隆
+        <item>Kaohsiung</item>//高雄
+        <item>Hualien</item>//花蓮
+        <item>Hsinchu</item>//新竹
+        <item>Douliu</item>//雲林縣斗六市
+        <item>Chiayi</item>//嘉義
     </string-array>
 </resources>
