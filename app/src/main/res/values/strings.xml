@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">final2020</string>
+    <string name="region">Region:</string>
+    <string name="weather">Weather:</string>
+    <string name="Today">Today :</string>
+    <string name="temperature">Temperature:</string>
+    <string name="sec">Search</string>
+    <string-array name="tw_cities">
+        <item>Zhubei</item>
+        <item>Yuanlin</item>
+        <item>Yilan</item>
+        <item>Toufen</item>
+        <item>Taoyuan</item>
+        <item>Taitung</item>
+        <item>Taipei</item>
+        <item>Tainan</item>
+        <item>Taichung</item>
+        <item>Taibao</item>
+        <item>Puzi</item>
+        <item>Pingtung</item>
+        <item>New Taipei</item>
+        <item>Nantou</item>
+        <item>Miaoli</item>
+        <item>Magong</item>
+        <item>Keelung</item>
+        <item>Kaohsiung</item>
+        <item>Hualien</item>
+        <item>Hsinchu</item>
+        <item>Douliu</item>
+        <item>Chiayi</item>
+        <item>Changhua</item>
+    </string-array>
 </resources>
